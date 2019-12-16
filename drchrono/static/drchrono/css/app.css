@@ -1,0 +1,19 @@
+html, body, .container {
+    height: 100%;
+    background: #EEE;
+    font-family: Avenir,Helvetica,sans-serif
+}
+
+#login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #login-container__button {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        background: #110f50;
+    }
