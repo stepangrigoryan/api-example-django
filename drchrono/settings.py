@@ -55,7 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'drchrono.middleware.DoctorMiddleware'
+    'drchrono.middleware.DoctorMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'drchrono.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\','/'),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,6 +101,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = (('en', _('English')),)
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 TIME_ZONE = 'UTC'
 
@@ -132,8 +133,9 @@ SOCIAL_AUTH_DRCHRONO_KEY = os.getenv('SOCIAL_AUTH_CLIENT_ID')
 SOCIAL_AUTH_DRCHRONO_SECRET = os.getenv('SOCIAL_AUTH_SECRET')
 
 
-LOGIN_REDIRECT_URL = '/post-login/'
+LOGIN_REDIRECT_URL = '/after-login/'
 LOGIN_URL = '/login/drchrono'
+LOGOUT_REDIRECT_URL = '/'
 
 SHELL_PLUS = "ipython"
 

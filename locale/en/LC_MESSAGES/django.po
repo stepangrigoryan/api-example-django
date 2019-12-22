@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 03:40+0000\n"
+"POT-Creation-Date: 2019-12-22 19:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: drchrono/templates/doctor_welcome.html:7
+#: drchrono/settings.py:103
+msgid "English"
+msgstr ""
+
+#: drchrono/templates/drchrono/dashboard.html:7
 msgid "welcome.title"
 msgstr "Welcome to drchrono"
 
-#: drchrono/views.py:16
-msgid "hello.there"
-msgstr ""
+#: drchrono/templates/drchrono/home.html:19
+msgid "drchrono.login"
+msgstr "Login with drchrono"
+
+#: drchrono/views/after_login.py:21
+msgid "oauth.error"
+msgstr "Something went wrong. Please try again."
+
+#: drchrono/views/after_login.py:29
+msgid "drchrono.api.error"
+msgstr "Something went wrong. Please try again."
