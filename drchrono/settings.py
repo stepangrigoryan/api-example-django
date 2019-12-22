@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -53,6 +54,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'drchrono.middleware.DoctorMiddleware'
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -97,6 +100,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGES = (('en', _('English')),)
 
 TIME_ZONE = 'UTC'
 
@@ -128,8 +132,8 @@ SOCIAL_AUTH_DRCHRONO_KEY = os.getenv('SOCIAL_AUTH_CLIENT_ID')
 SOCIAL_AUTH_DRCHRONO_SECRET = os.getenv('SOCIAL_AUTH_SECRET')
 
 
-LOGIN_REDIRECT_URL = '/welcome/'
-LOGIN_URL = 'login/drchrono'
+LOGIN_REDIRECT_URL = '/post-login/'
+LOGIN_URL = '/login/drchrono'
 
 SHELL_PLUS = "ipython"
 

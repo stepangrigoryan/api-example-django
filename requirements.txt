@@ -13,3 +13,4 @@ whitenoise==4.1.3
 mysql-python
 ipython
 djangorestframework
+Werkzeug
