@@ -16,3 +16,14 @@ services:
     build:
       context: .
       dockerfile: ./docker/drchrono-dockerfile
+
+  lint:
+    container_name: lint
+    image: lint
+    command: /bin/bash -c "while true; do echo mark; sleep 2; done"
+    volumes:
+      - ".:/usr/src/app"
+    working_dir: /usr/src/app
+    build:
+      context: .
+      dockerfile: ./docker/lint-dockerfile
