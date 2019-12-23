@@ -1,14 +1,13 @@
-html, body, .container {
-    height: 100%;
-    background: #EEE;
-    font-family: Avenir,Helvetica,sans-serif
-}
-
 #login-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
+
+    #login-container__box {
+
+    }
 
     #login-container__button {
         text-transform: uppercase;

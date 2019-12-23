@@ -34,7 +34,8 @@ class Doctor(BaseModel):
     drchrono_id = models.IntegerField(unique=True)
     drchrono_practice_group_id = models.IntegerField()
     social_auth = models.OneToOneField(
-        'social_django.UserSocialAuth', models.PROTECT, related_name='doctor')
+        'social_django.UserSocialAuth', models.PROTECT, related_name='doctor'
+    )
 
     objects = DoctorManager()
 

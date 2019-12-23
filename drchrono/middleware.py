@@ -8,4 +8,5 @@ class DoctorMiddleware(MiddlewareMixin):
         request.doctor = None
         if request.user.is_authenticated:
             request.doctor = Doctor.objects.filter(
-                social_auth__user=request.user).first()
+                social_auth__user=request.user
+            ).first()

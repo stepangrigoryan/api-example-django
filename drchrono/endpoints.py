@@ -42,6 +42,7 @@ class BaseEndpoint(object):
 
     Subclasses should implement a specific endpoint.
     """
+
     BASE_URL = 'https://drchrono.com/api/'
     endpoint = ''
 
@@ -68,17 +69,16 @@ class BaseEndpoint(object):
         Modifies kwargs in place. Returns None.
         """
         kwargs['headers'] = kwargs.get('headers', {})
-        kwargs['headers'].update({
-            'Authorization': 'Bearer {}'.format(self.access_token),
-
-        })
+        kwargs['headers'].update(
+            {'Authorization': 'Bearer {}'.format(self.access_token),}
+        )
 
     def _json_or_exception(self, response):
         """
         returns the JSON content or raises an exception, based on what kind of response (2XX/4XX) we get
         """
         if response.ok:
-            if response.status_code != 204: # No Content
+            if response.status_code != 204:  # No Content
                 return response.json()
         else:
             exe = ERROR_CODES.get(response.status_code, APIException)
@@ -105,7 +105,9 @@ class BaseEndpoint(object):
             self.logger.debug("list got page {}".format('url'))
             while url:
                 data = response.json()
-                url = data['next']  # Same as the resource URL, but with the page query parameter present
+                url = data[
+                    'next'
+                ]  # Same as the resource URL, but with the page query parameter present
                 for result in data['results']:
                     yield result
         else:

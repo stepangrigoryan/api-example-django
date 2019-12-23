@@ -1,0 +1,8 @@
+[tool.black]
+line-length = 80
+skip-string-normalization = true
+exclude = '''
+/(
+  drchrono\/migrations
+)/
+'''

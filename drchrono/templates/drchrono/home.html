@@ -1,0 +1,25 @@
+{% extends 'drchrono/base.html' %}
+{% load i18n %}
+
+{% block body %}
+
+    <div id="login-container">
+        <div id="login-container__box">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %}
+                            class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <a href="{% url 'social:begin' 'drchrono' %}"
+               id="login-container__button">
+                {% trans 'drchrono.login' %}
+            </a>
+        </div>
+
+
+    </div>
+
+{% endblock %}
