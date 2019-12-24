@@ -1,5 +1,5 @@
 from django import forms
-from django.db.models import Q
+from django.utils.translation import gettext_lazy as _
 
 from drchrono.models import Patient
 
@@ -8,25 +8,20 @@ class CheckinForm(forms.Form):
     first_name = forms.CharField(
         required=True,
         max_length=255,
-        widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'First Name'}
-        ),
+        widget=forms.TextInput(attrs={'placeholder': 'Joe'}),
     )
     last_name = forms.CharField(
         required=True,
         max_length=255,
-        widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Last Name'}
-        ),
+        widget=forms.TextInput(attrs={'placeholder': 'Smith'}),
     )
     social_security_number = forms.CharField(
         required=False,
         max_length=255,
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control',
                 'pattern': r'\d{3}-\d{2}-\d{4}',
-                'placeholder': 'Social Security Number',
+                'placeholder': '123-34-5678',
             }
         ),
     )
@@ -35,14 +30,6 @@ class CheckinForm(forms.Form):
         data = super(CheckinForm, self).clean()
         social_security_number = data.get('social_security_number')
         patient = None
-        if social_security_number:
-            try:
-                patient = Patient.objects.get(
-                    social_security_number=social_security_number
-                )
-            except Patient.DoesNotExist:
-                pass
-
         first_name = data.get('first_name')
         last_name = data.get('last_name')
 
@@ -50,17 +37,17 @@ class CheckinForm(forms.Form):
             first_name = first_name.lower()
             first_name = first_name.lower()
             patients = Patient.objects.filter(
-                Q(social_security_number=None) | Q(social_security_number=''),
+                social_security_number=social_security_number,
                 first_name__contains=first_name,
                 last_name__icontains=last_name,
             )
-            # if we only have one person in the database with the given name
-            # but no social security number is set on the patient then let them
-            # checkin
+            # If we have multiple people with the same name and social then
+            # take the first one
             if patients.count() == 1:
                 patient = patients.first()
 
         if patient is None:
-            raise forms.ValidationError('Can not find you')
+
+            raise forms.ValidationError(_('checkin.patient_not_found'))
 
         return {'patient': patient}

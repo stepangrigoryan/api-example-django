@@ -18,5 +18,5 @@ class CheckinView(FormView):
 
     def form_valid(self, form):
         return HttpResponseRedirect(
-            reverse('checkin_patient', args=(form.cleaned_data['patient'].id,))
+            reverse('patient_checkin', args=(form.cleaned_data['patient'].id,))
         )

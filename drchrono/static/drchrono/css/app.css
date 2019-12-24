@@ -16,3 +16,40 @@
         padding: 0.5rem 1rem;
         background: #110f50;
     }
+
+.checkin-container {
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+}
+
+.checkin-container button {
+    background: #1f3a93;
+    border: #1f3a93;
+}
+
+.non-field-errors li {
+    color: #b0090e;
+}
+
+.checkin input {
+    width: 100%;
+    border: none;
+    padding: 0.4rem;
+    line-height: 100%;
+}
+
+.checkin legend {
+    font-size: 80%;
+    margin: 0;
+    font-weight: bolder;
+}
+
+
+.checkin button {
+    width: 100%;
+}
+
+.checkin-header {
+    padding: 2rem 1rem;
+}

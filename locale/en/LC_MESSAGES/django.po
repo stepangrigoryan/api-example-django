@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 19:19+0000\n"
+"POT-Creation-Date: 2019-12-24 18:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: drchrono/settings.py:103
+#: drchrono/forms/checkin.py:65
+msgid "checkin.patient_not_found"
+msgstr "We can not find you in our system. Please make you have entered your name and social security number correctly"
+
+#: drchrono/settings.py:104
 msgid "English"
 msgstr ""
 
-#: drchrono/templates/drchrono/dashboard.html:7
-msgid "welcome.title"
-msgstr "Welcome to drchrono"
-
-#: drchrono/templates/drchrono/home.html:19
+#: drchrono/templates/drchrono/home.html:18
 msgid "drchrono.login"
 msgstr "Login with drchrono"
 
-#: drchrono/views/after_login.py:21
+#: drchrono/views/after_login.py:24
 msgid "oauth.error"
 msgstr "Something went wrong. Please try again."
 
-#: drchrono/views/after_login.py:29
+#: drchrono/views/after_login.py:32
 msgid "drchrono.api.error"
 msgstr "Something went wrong. Please try again."
+
+#~ msgid "welcome.title"
+#~ msgstr "Welcome to drchrono"

@@ -13,14 +13,6 @@
     </div>
     <div class="checkin-container">
         <form action="" method="POST" class="checkin">{% csrf_token %}
-            {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                        <div{% if message.tags %}
-                            class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
             {% form_errors form %}
             <div class="row">
                 <div class="col">
@@ -40,14 +32,35 @@
             <div class="row">
                 <div class="col">
                     <fieldset class="border checkin">
+                        <legend class="w-auto">Race</legend>
+                        {{ form.race }}
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset class="border checkin">
+                        <legend class="w-auto">Ethnicity</legend>
+                        {{ form.ethnicity }}
+                    </fieldset>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <fieldset class="border checkin">
                         <legend class="w-auto">Social Security Number</legend>
                         {{ form.social_security_number }}
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset class="border checkin">
+                        <legend class="w-auto">Date of Birth</legend>
+                        {{ form.date_of_birth }}
                     </fieldset>
                 </div>
             </div>
             <br>
             <button type="submit" class="btn btn-primary checkin">
-                NEXT
+                Update and Check-in
             </button>
         </form>
     </div>

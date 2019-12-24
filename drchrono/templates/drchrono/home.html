@@ -3,6 +3,30 @@
 
 {% block body %}
 
+    <style>
+    html, body, .container {
+        height: 100%;
+        background: #EEE;
+        font-family: Avenir,Helvetica,sans-serif
+    }
+
+    .container {
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #login-container__button {
+        text-decoration: none;
+        color: white;
+        font-size: 150%;
+        border: 1px solid #CCC;
+        padding: 10px;
+        background: #222;
+    }
+</style>
+
     <div id="login-container">
         <div id="login-container__box">
             {% if messages %}

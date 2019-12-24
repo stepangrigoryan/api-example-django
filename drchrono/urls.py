@@ -3,9 +3,11 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 
 from drchrono.views.after_login import AfterLoginView
+from drchrono.views.patient_checkin import PatientCheckinView
 from drchrono.views.checkin import CheckinView
 from drchrono.views.dashboard import DashboardView
 from drchrono.views.home import HomeView
+from drchrono.views.see_patient import SeePatientView
 from drchrono.views.webhook import WebhookView
 
 admin.autodiscover()
@@ -17,8 +19,13 @@ urlpatterns = [
     url(r'^checkin/$', CheckinView.as_view(), name='checkin',),
     url(
         r'^checkin/(?P<patient_id>[0-9A-Fa-f-]+)/$',
-        CheckinView.as_view(),
-        name='checkin_patient',
+        PatientCheckinView.as_view(),
+        name='patient_checkin',
+    ),
+    url(
+        r'^appointments/(?P<appointment_id>[0-9A-Fa-f-]+)/$',
+        SeePatientView.as_view(),
+        name='see_patient',
     ),
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard',),
     url(r'^after-login/$', AfterLoginView.as_view(), name='post_login',),
