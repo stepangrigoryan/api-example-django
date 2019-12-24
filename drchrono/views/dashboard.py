@@ -1,11 +1,16 @@
-import pprint
+import logging
 
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from social_django.models import UserSocialAuth
 
+from drchrono.decorators import doctor_login_required
 from drchrono.endpoints import DoctorEndpoint
 
+logger = logging.getLogger()
 
+
+@method_decorator(doctor_login_required, name='dispatch')
 class DashboardView(TemplateView):
     """
     The doctor can see what appointments they have today.
@@ -43,7 +48,6 @@ class DashboardView(TemplateView):
         # Hit the API using one of the endpoints just to prove that we can
         # If this works, then your oAuth setup is working correctly.
         doctor_details = self.make_api_request()
-        s = pprint.pformat(doctor_details)
         kwargs['doctor'] = doctor_details
-        kwargs['s'] = s
+        logging.debug('test')
         return kwargs

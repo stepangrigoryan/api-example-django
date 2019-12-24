@@ -1,0 +1,17 @@
+{% extends 'drchrono/base.html' %}
+{% block body %}
+    <h3>Checkin for <strong>{{ request.doctor }}</strong></h3>
+    <form action="" method="POST">{% csrf_token %}
+        <div class="form-group">
+            {{ form.first_name }}
+        </div>
+        <div class="form-group">
+            {{ form.last_name }}
+        </div>
+        <div class="form-group">
+            {{ form.social_security_number }}
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%">NEXT
+        </button>
+    </form>
+{% endblock %}

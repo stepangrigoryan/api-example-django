@@ -25,7 +25,8 @@ ERROR_CODES = {
 }
 
 
-# TODO: this API abstraction is included for your convenience. If you don't like it, feel free to change it.
+# TODO: this API abstraction is included for your convenience.
+#  If you don't like it, feel free to change it.
 class BaseEndpoint(object):
     """
     A python wrapper for the basic rules of the drchrono API endpoints.
@@ -64,7 +65,8 @@ class BaseEndpoint(object):
 
     def _auth_headers(self, kwargs):
         """
-        Adds auth information to the kwargs['header'], as expected by get/put/post/delete
+        Adds auth information to the kwargs['header'], as expected by
+        get/put/post/delete
 
         Modifies kwargs in place. Returns None.
         """
@@ -75,7 +77,8 @@ class BaseEndpoint(object):
 
     def _json_or_exception(self, response):
         """
-        returns the JSON content or raises an exception, based on what kind of response (2XX/4XX) we get
+        returns the JSON content or raises an exception, based on what kind
+        of response (2XX/4XX) we get
         """
         if response.ok:
             if response.status_code != 204:  # No Content
@@ -85,7 +88,8 @@ class BaseEndpoint(object):
             raise exe(response.content)
 
     def _request(self, method, *args, **kwargs):
-        # dirty, universal way to use the requests library directly for debugging
+        # dirty, universal way to use the requests library directly
+        # for debugging
         url = self._url(kwargs.pop(id, ''))
         self._auth_headers(kwargs)
         return getattr(requests, method)(url, *args, **kwargs)
@@ -105,9 +109,9 @@ class BaseEndpoint(object):
             self.logger.debug("list got page {}".format('url'))
             while url:
                 data = response.json()
-                url = data[
-                    'next'
-                ]  # Same as the resource URL, but with the page query parameter present
+                url = data['next']
+                # Same as the resource URL, but with the page query
+                # parameter present
                 for result in data['results']:
                     yield result
         else:
@@ -147,9 +151,11 @@ class BaseEndpoint(object):
         """
         Updates an object. Returns None.
 
-        When partial=False, uses PUT to update the entire object at the given ID with the given values.
+        When partial=False, uses PUT to update the entire object at the given
+        ID with the given values.
 
-        When partial=TRUE [the default] uses PATCH to update only the given fields on the object.
+        When partial=TRUE [the default] uses PATCH to update only the given
+        fields on the object.
 
         Response body will be empty.
 
@@ -191,7 +197,8 @@ class PatientEndpoint(BaseEndpoint):
 class AppointmentEndpoint(BaseEndpoint):
     endpoint = "appointments"
 
-    # Special parameter requirements for a given resource should be explicitly called out
+    # Special parameter requirements for a given resource should be explicitly
+    # called out
     def list(self, params=None, date=None, start=None, end=None, **kwargs):
         """
         List appointments on a given date, or between two dates

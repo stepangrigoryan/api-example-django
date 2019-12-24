@@ -1,6 +1,8 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from social_django.models import UserSocialAuth
@@ -11,6 +13,7 @@ from drchrono.models import Doctor
 _PROVIDER = 'drchrono'
 
 
+@method_decorator(login_required, name='dispatch')
 class AfterLoginView(View):
     def get(self, request, *args, **kwargs):
         logout = reverse('logout')
